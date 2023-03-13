@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import "../styles/calendar.scss";
+import dayjs from "dayjs/esm";
+import weekday from "dayjs/plugin/weekday";
+
+import LightBox from "./lightBox";
+
+dayjs.extend(weekday);
+
+// dayjs.extend(weekday);
 function Calendar() {
   const today = new Date();
   const nowMonth = today.getMonth() + 1; // 預設值是從0開始，故+1
@@ -9,60 +17,102 @@ function Calendar() {
   //選擇項目
   const [selYear, setSelYear] = useState(2023);
   const [selMonth, setSelMonth] = useState(nowMonth);
-  //星期幾
+  const [selDay, setSelDay] = useState("");
+  const [lightBoxBtn, setLightBoxBtn] = useState(true);
+
+  // 定義當月份日期，並給予dayJS api判別
+  const thisMonthDate = `${selYear} / ${selMonth} / 01`;
+  //星期
   const day = ["日", "一", "二", "三", "四", "五", "六"];
+
+  //一周text
   const dayTxt = (
-    <tr>
+    <div className="day_wrap">
       {day.map((v, i) => {
-        return <td key={v}>{v}</td>;
+        return (
+          <div className="weekday" key={v}>
+            {v}
+          </div>
+        );
       })}
-    </tr>
+    </div>
   );
 
-  //行事曆空白框
-  const emptyCalendar = Array(5)
-    .fill(1)
-    .map((v, i) => {
-      return (
-        <tr key={i + 10}>
-          {Array(7)
-            .fill(1)
-            .map((v, i) => {
-              return <td key={i} className="empty_day"></td>;
-            })}
-        </tr>
-      );
-    });
+  //行事曆日期
+  const renderDay = (
+    <div className="day_wrap">
+      {/* 空白日 */}
+      {Array(dayjs(thisMonthDate).weekday())
+        .fill(1)
+        .map((v, i) => {
+          return <div className="empty"></div>;
+        })}
+      {/* 有天數的 */}
+      {Array(35 - dayjs(thisMonthDate).weekday())
+        .fill(1)
+        .map((v, i) => {
+          //判斷當月有幾天
+          if (i + 1 > dayjs(thisMonthDate).daysInMonth()) return;
+          return (
+            <div
+              className="haveday"
+              onClick={(e) => {
+                setSelDay(e.target.innerText);
+                setLightBoxBtn(true);
+              }}
+            >
+              {i + 1}
+            </div>
+          );
+        })}
+    </div>
+  );
 
-  const next = () => {
+  //月份上下切換 function
+  const month_next = () => {
     setSelMonth(selMonth + 1);
     if (selMonth >= 12) {
       setSelYear(selYear + 1);
       setSelMonth(1);
     }
   };
+  const month_prev = () => {
+    setSelMonth(selMonth - 1);
+    if (selMonth <= 1) {
+      setSelYear(selYear - 1);
+      setSelMonth(12);
+    }
+  };
 
-  //計算當月開始日期為星期幾
   return (
     <>
+      {lightBoxBtn && (
+        <LightBox
+          setLightBoxBtn={setLightBoxBtn}
+          selMonth={selMonth}
+          selDay={selDay}
+        />
+      )}
       <div>{selYear}</div>
       <div className="month">
-        <span>
+        <span
+          onClick={() => {
+            month_prev();
+          }}
+        >
           <i className="fa-solid fa-caret-left"></i>
         </span>
         {selMonth}月
         <span
           onClick={() => {
-            next();
+            month_next();
           }}
         >
           <i className="fa-solid fa-caret-right"></i>
         </span>
       </div>
-      <table>
-        <thead>{dayTxt}</thead>
-        <tbody>{emptyCalendar}</tbody>
-      </table>
+      {dayTxt}
+      {renderDay}
     </>
   );
 }

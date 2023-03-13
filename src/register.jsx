@@ -12,4 +12,5 @@ export const register = [
     src: "./component/clander",
     component: Calendar,
   },
+  
 ];

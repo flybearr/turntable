@@ -1,8 +1,6 @@
-.empty_day{
-    border: 1px solid red;
-    width: 50px;
-    height: 50px;
-    background-color: #ccc;
+*{
+    box-sizing:border-box;
+   font-size: 1.2rem;
 }
 .month{
     display: flex;
@@ -11,5 +9,43 @@
     i:hover{
        color: red;
        cursor: pointer;
+    }
+}
+
+
+.day_wrap{
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    border : 1px solid black;
+    div{
+        border : .5px solid black;
+        border-collapse:collapse;
+    }
+    .weekday{
+        width: 14.28%;
+        height: 50px;
+        font-size:1.5rem;
+    }
+    .empty{
+        width: 14.28%;
+        height: 50px;
+         background-color: #ccc;
+    }
+    .haveday{
+        width: 14.28%;
+        height: 50px;
+        font-size:1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .haveday:hover{
+        background-color: lightcoral;
+        cursor: pointer;
     }
 }

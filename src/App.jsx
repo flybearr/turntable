@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import { register } from "./register";
-
+import { Buffer } from "buffer";
 function App() {
   const [displayIndex, setDisplayIndex] = useState(1);
   const selection = (
