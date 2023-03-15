@@ -23,10 +23,14 @@ function Calendar() {
   const [selYear, setSelYear] = useState(2017);
   const [selMonth, setSelMonth] = useState(nowMonth);
   const [selDay, setSelDay] = useState("");
-  const [lightBoxBtn, setLightBoxBtn] = useState(false);
+  const [lightBoxBtn, setLightBoxBtn] = useState(true);
 
   // 定義當月份日期，並給予dayJS api判別
   const thisMonthDate = `${selYear} / ${selMonth} / 01`;
+  //定義當月開頭為星期幾
+  const startWeekDay = dayjs(thisMonthDate).weekday();
+  //定義當月有幾天
+  const monthAllDate = dayjs(thisMonthDate).daysInMonth();
   //星期
   const day = ["日", "一", "二", "三", "四", "五", "六"];
 
@@ -65,8 +69,6 @@ function Calendar() {
 
     newData = filterResult.map((v, i, arr) => {
       const month = new Date(v.date).getMonth() + 1;
-
-      console.log(v.price);
       if (!month) return;
       if (i === 0)
         return (
@@ -75,7 +77,7 @@ function Calendar() {
               {filterResult.length > 1 ? (
                 <>
                   <p className="more">
-                    看更多團位<i class="fa-solid fa-play"></i>
+                    看更多團位<i className="fa-solid fa-play"></i>
                   </p>
                 </>
               ) : (
@@ -105,22 +107,21 @@ function Calendar() {
   //行事曆日期
   const renderDay = (
     <div className="day_wrap">
-      {/* 空白日 */}
-      {Array(dayjs(thisMonthDate).weekday())
+      {/* 開頭空白日 */}
+      {Array(startWeekDay)
         .fill(1)
         .map((v, i) => {
-          return <div className="empty"></div>;
+          return <div className="empty" key={`empty${i}`}></div>;
         })}
       {/* 有天數的 */}
 
-      {Array(42 - dayjs(thisMonthDate).weekday())
+      {Array(monthAllDate)
         .fill(1)
         .map((v, i) => {
-          if (i + 1 > dayjs(thisMonthDate).daysInMonth())
-            return <div className="empty"></div>;
           return (
             <div
               className="haveday"
+              key={`day${i + 1}`}
               onClick={(e) => {
                 setSelDay(i + 1);
                 setLightBoxBtn(true);
@@ -132,6 +133,16 @@ function Calendar() {
               {goToTravel(i + 1)}
             </div>
           );
+        })}
+      {/* 尾段空白日 */}
+      {Array(
+        startWeekDay + monthAllDate <= 35
+          ? 35 - (startWeekDay + monthAllDate)
+          : 42 - (startWeekDay + monthAllDate)
+      )
+        .fill(1)
+        .map((v, i) => {
+          return <div className="empty" key={`empty2_${i}`}></div>;
         })}
     </div>
   );
