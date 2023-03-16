@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import "../styles/lightBox.scss";
-export default function LightBox({ setLightBoxBtn, selMonth, selDay }) {
-  const [btnActive, setBtnActive] = useState(false);
+export default function LightBox({
+  setLightBoxBtn,
+  selMonth,
+  selDay,
+  btnActive,
+  setBtnActive,
+}) {
+
   return (
     <div
       className="box_wrap"

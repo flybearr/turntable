@@ -1,6 +1,7 @@
 import MultipleChart from "./component/chart";
 // import Mqtt_logout from "./pages/mqtt_logout";
-import Calendar from "./component/clander";
+import Calendar from "./component/calendar";
+import Turntable from "./component/turntable";
 export const register = [
   {
     name: "MultipleChart",
@@ -9,8 +10,12 @@ export const register = [
   },
   {
     name: "Calendar",
-    src: "./component/clander",
+    src: "./component/calendar",
     component: Calendar,
   },
-  
+  {
+    name: "Turntable",
+    src: "./component/Turntable",
+    component: Turntable,
+  },
 ];

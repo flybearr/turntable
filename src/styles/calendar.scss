@@ -2,19 +2,79 @@
     box-sizing:border-box;
    font-size: 1.2rem;
 }
+
+
+@mixin dayHover{
+    border: rgb(232, 32, 14) 3px solid;
+    cursor: pointer;
+}
+@mixin dayWrap{
+    border : 3px solid black;
+    width: 14.28%;
+    height: 130px;
+    font-size:1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+@mixin number{
+    font-family: 'Titan One', cursive;
+    font-size: 1.5rem;
+}
+
 .year{
     text-align: center;
+    @include number;
 }
 .month{
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 20px;
+    i{
+        font-size: 2rem;
+    }
     i:hover{
        color: red;
        cursor: pointer;
     }
+    
+    .month_left{
+        width: 10%;
+    }.month_mid{
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .day_number{
+            @include number;
+            margin:0 10px;
+        }
+        
+    }.month_right{
+        width: 10%;
+    }
 }
 
+.tag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    .tag_holiday{
+        width: 20px;
+        height: 20px;
+        background-color: rgb(243, 243, 193);
+        border:1px solid black;
+    }
+    .tag_work{
+        width: 20px;
+        height: 20px;
+        background-color: rgb(102, 180, 243);
+        border:1px solid black;
+    }
+}
 
 .day_wrap{
     width: 800px;
@@ -30,33 +90,46 @@
         border-collapse:collapse;
     }
     .weekday{
-        border : .5px solid black;
+        border : 3px solid black;
         width: 14.28%;
         height: 50px;
         font-size:1.5rem;
     }
     .empty{
-        border : .5px solid black;
+        border : 3px solid black;
         width: 14.28%;
         height: 130px;
-        background-color: #ccc;
+        background-color: #cccccc63;
     }
-    .haveday{
-        border : .5px solid black;
-        width: 14.28%;
-        height: 130px;
-        font-size:1.2rem;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: start;
-       
+    .normal_day{
+        @include dayWrap;
     }
-    .haveday:hover{
-        border: lightcoral 5px solid;
-        cursor: pointer;
+    .make_up_work{
+        @include dayWrap;
+        background-color: rgb(102, 180, 243);
+    }
+    .make_up_work:hover{
+        @include dayHover;
+    }
+    .day_off{
+        @include dayWrap;
+        background-color: rgb(243, 243, 193);
+    }
+    .day_off:hover{
+        @include dayHover;
+    }
+    .day_number{
+        margin: 5px 0 0 10px;
+        @include number;
     }
 }
 
+
+
+
+
+
+// 搭配雄獅JSON檔案
 .travel_wrap{
     
     width: 100%;
