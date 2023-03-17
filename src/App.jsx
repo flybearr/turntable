@@ -3,7 +3,7 @@ import { useState } from "react";
 import { register } from "./register";
 import { Buffer } from "buffer";
 function App() {
-  const [displayIndex, setDisplayIndex] = useState(1);
+  const [displayIndex, setDisplayIndex] = useState(2);
   const selection = (
     <select
       value={displayIndex}
