@@ -1,0 +1,33 @@
+.row1 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row3 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.keyboard {
+  margin: 3px;
+  -webkit-user-select: none;
+}
+.keyboard button {
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.cap {
+  background-color: rgb(111, 107, 107);
+}
+
+textarea {
+  border: none;
+  outline: none;
+}/*# sourceMappingURL=keyboard.css.map */

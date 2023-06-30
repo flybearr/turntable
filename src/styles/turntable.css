@@ -1,0 +1,127 @@
+.turning_wrap {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.turning_wrap .title {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.turning_wrap .prize {
+  color: white;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+.turning_wrap .prize .prize_wrap {
+  margin: 5px 0;
+}
+.turning_wrap .prize .prize_wrap span {
+  color: black;
+  font-weight: 700;
+  background-color: rgb(255, 217, 122);
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  padding: 2px 4px;
+}
+.turning_wrap .prize .prize_wrap span i {
+  margin-left: 10px;
+}
+.turning_wrap .prize .prize_wrap span i:hover {
+  color: red;
+  cursor: pointer;
+}
+.turning_wrap .canvasWrap {
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+.turning_wrap .canvasWrap .triangle {
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-top: 50px solid #010101;
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 7.5px);
+  top: 30px;
+}
+.turning_wrap .start_turn {
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  font-weight: 700;
+  background-color: #558ffa;
+  cursor: pointer;
+}
+.turning_wrap .stop_turn {
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  font-weight: 700;
+  background-color: #e77f71;
+  cursor: pointer;
+}
+.turning_wrap .addPrize {
+  margin-left: 10px;
+  background-color: #87e6dc;
+  border-radius: 5px;
+  border: none;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+}
+.turning_wrap .addPrize:hover {
+  background-color: #e9aaf3;
+}
+.turning_wrap .editPrize {
+  margin-left: 10px;
+  background-color: #e7deb8;
+  border-radius: 5px;
+  border: none;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+}
+.turning_wrap .editPrize:hover {
+  background-color: #e9aaf3;
+}
+
+.edit_lightbox_wrap {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.5725490196);
+}
+.edit_lightbox_wrap .box {
+  width: 500px;
+  height: 600px;
+  background-color: #8ab1c8;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.edit_lightbox_wrap .box textarea {
+  border-radius: 10px;
+}
+.edit_lightbox_wrap .box button {
+  margin-left: 10px;
+  background-color: #87e6dc;
+  border-radius: 5px;
+  border: none;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+}
+.edit_lightbox_wrap .box button:hover {
+  background-color: #e9aaf3;
+}/*# sourceMappingURL=turntable.css.map */

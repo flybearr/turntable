@@ -1,0 +1,55 @@
+.box_wrap {
+  position: fixed;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6352941176);
+  width: 100%;
+  height: 100vh;
+}
+.box_wrap .box {
+  width: 700px;
+  height: 600px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 50px auto;
+}
+.box_wrap .box p {
+  font-size: 2rem;
+  text-align: center;
+}
+.box_wrap .box .ups_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.box_wrap .box .ups_btn p {
+  font-size: 1.3rem;
+  text-align: center;
+}
+.box_wrap .box .container {
+  box-sizing: border-box;
+  width: 70px;
+  height: 40px;
+  padding: 2px;
+  border-radius: 20px;
+  background-color: #eee;
+  border: 2px solid #ccc;
+}
+.box_wrap .box .circle {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  background-color: #aaa;
+  border-radius: 50%;
+  margin-left: 0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.box_wrap .box .is-active.container {
+  background-color: Honeydew;
+  border-color: SeaGreen;
+}
+.box_wrap .box .is-active .circle {
+  background-color: DarkGreen;
+  margin-left: calc(100% - 32px);
+}/*# sourceMappingURL=lightBox.css.map */
