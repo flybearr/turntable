@@ -120,7 +120,7 @@ export default function Turntable() {
               <span>
                 {v}
                 <i
-                  class="fa-solid fa-circle-xmark"
+                  className="fa-solid fa-circle-xmark"
                   onClick={() => {
                     delPrize(i);
                   }}
